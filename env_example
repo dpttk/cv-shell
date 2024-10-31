@@ -1,0 +1,10 @@
+LANG=en_US.utf8
+APACHE_RUN_DIR=/var/run/apache2
+APACHE_RUN_USER=www-data
+APACHE_RUN_GROUP=www-data
+APACHE_PID_FILE=/var/run/apache2/apache2.pid
+APACHE_LOG_DIR=/var/log/apache2
+APACHE_DOCUMENT_ROOT=/home/www-data
+APACHE_DIRECTORY_INDEX=.shell.php
+
+TITLE="test"
