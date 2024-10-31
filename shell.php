@@ -197,8 +197,8 @@ if (isset($_GET["feature"])) {
             html, body {
                 margin: 0;
                 padding: 0;
-                background: #333;
-                color: #eee;
+                background: #2D2D2D; /* Dark background */
+                color: #C4C4C4; /* Light text color */
                 font-family: monospace;
                 width: 100vw;
                 height: 100vh;
@@ -207,7 +207,7 @@ if (isset($_GET["feature"])) {
 
             *::-webkit-scrollbar-track {
                 border-radius: 8px;
-                background-color: #353535;
+                background-color: #353535; /* Dark scroll track */
             }
 
             *::-webkit-scrollbar {
@@ -218,11 +218,11 @@ if (isset($_GET["feature"])) {
             *::-webkit-scrollbar-thumb {
                 border-radius: 8px;
                 -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-                background-color: #bcbcbc;
+                background-color: #888; /* Lighter gray for scrollbar thumb */
             }
 
             #shell {
-                background: #222;
+                background: #2D2D2D; /* Match background color */
                 box-shadow: 0 0 5px rgba(0, 0, 0, .3);
                 font-size: 10pt;
                 display: flex;
@@ -246,7 +246,7 @@ if (isset($_GET["feature"])) {
 
             #shell-logo {
                 font-weight: bold;
-                color: #FF4180;
+                color: #7FFF97; /* Green highlight color */
                 text-align: center;
             }
 
@@ -261,7 +261,7 @@ if (isset($_GET["feature"])) {
             }
 
             @media (max-width: 991px),
-                   (max-height: 600px) {
+                (max-height: 600px) {
                 #shell-logo {
                     font-size: 6px;
                     margin: -25px 0;
@@ -288,11 +288,11 @@ if (isset($_GET["feature"])) {
 
             .shell-prompt {
                 font-weight: bold;
-                color: #75DF0B;
+                color: #7FFF97; /* Green prompt color */
             }
 
             .shell-prompt > span {
-                color: #1BC9E7;
+                color: #C4C4C4; /* Secondary light gray color */
             }
 
             #shell-input {
@@ -315,7 +315,7 @@ if (isset($_GET["feature"])) {
                 line-height: 30px;
                 border: none;
                 background: transparent;
-                color: #eee;
+                color: #C4C4C4; /* Light text color */
                 font-family: monospace;
                 font-size: 10pt;
                 width: 100%;
@@ -332,6 +332,7 @@ if (isset($_GET["feature"])) {
                 outline: none;
             }
         </style>
+
 
         <script>
             var SHELL_CONFIG = <?php echo json_encode($SHELL_CONFIG); ?>;
@@ -585,12 +586,13 @@ if (isset($_GET["feature"])) {
         <div id="shell">
             <pre id="shell-content">
                 <div id="shell-logo">
-        ___                         ____      _          _ _        _  _   <span></span>
- _ __  / _ \__      ___ __  _   _  / __ \ ___| |__   ___| | |_ /\/|| || |_ <span></span>
-| '_ \| | | \ \ /\ / / '_ \| | | |/ / _` / __| '_ \ / _ \ | (_)/\/_  ..  _|<span></span>
-| |_) | |_| |\ V  V /| | | | |_| | | (_| \__ \ | | |  __/ | |_   |_      _|<span></span>
-| .__/ \___/  \_/\_/ |_| |_|\__, |\ \__,_|___/_| |_|\___|_|_(_)    |_||_|  <span></span>
-|_|                         |___/  \____/                                  <span></span>
+                    <pre>
+        _   _      _ _          _    _                    <span></span>
+       | | | | ___| | | ___    | |_ | |__   ___  ___  ___ <span></span>
+       | |_| |/ _ \ | |/ _ \   |  _|| '_ \ / _ \|  _|/ _ \<span></span>
+       |  _  |  __/ | | (_) |  | |__| | | |  __/| |  | __/<span></span>
+       |_| |_|\___|_|_|\___/    \___\_| |_|\___||_|  \___|<span></span>
+                    </pre>
                 </div>
             </pre>
             <div id="shell-input">
