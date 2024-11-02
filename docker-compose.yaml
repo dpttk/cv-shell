@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  shell: 
+    build: .
+    hostname: yourhostname
+    env_file: .env
+    ports: 
+      - 8080:80
