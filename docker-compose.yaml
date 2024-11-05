@@ -1,4 +1,4 @@
-version: "3"
+version: "3.7"
 
 services:
   shell: 
@@ -11,3 +11,9 @@ services:
     env_file: .env
     ports: 
       - 8080:80
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.30'
+          memory: 100M

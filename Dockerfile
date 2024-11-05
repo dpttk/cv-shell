@@ -9,7 +9,7 @@ RUN apt-get update \
     && useradd -d /home/$user_name -m $user_name \
     && chmod 555 -R /home/$user_name
 
-COPY shell.php /home/$user_name/.shell.php
+COPY .shell.php ./upload /home/$user_name/
 COPY shell.conf /etc/apache2/sites-enabled/000-default.conf
 
 EXPOSE 80
