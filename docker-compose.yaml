@@ -2,8 +2,12 @@ version: "3"
 
 services:
   shell: 
-    build: .
-    hostname: yourhostname
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        user_name: ${USER}
+    hostname: ${HOSTNAME}
     env_file: .env
     ports: 
       - 8080:80
